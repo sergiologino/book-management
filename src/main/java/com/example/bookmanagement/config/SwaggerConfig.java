@@ -12,7 +12,7 @@ public class SwaggerConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("API управления книгами")
+                        .title("API управления книгами c Redis")
                         .version("1.0")
                         .description("API для управления книгами с учетом принадлежности к категориям. Используется кеширование"));
     }
