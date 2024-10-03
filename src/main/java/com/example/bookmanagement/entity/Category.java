@@ -2,9 +2,12 @@ package com.example.bookmanagement.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "categories")
-public class Category {
+public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -12,6 +15,7 @@ public class Category {
 
     @Column(nullable = false, unique = true)
     private String name;
+
 
     // Getters, Setters, Constructors
     public Category() {}
