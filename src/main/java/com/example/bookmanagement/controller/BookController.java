@@ -20,12 +20,12 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @Operation(summary = "Find a book by title and author")
+    @Operation(summary = "Поиск книги по названию и автору")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the book",
+            @ApiResponse(responseCode = "200", description = "Книга найдена",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Book.class)) }),
-            @ApiResponse(responseCode = "404", description = "Book not found",
+            @ApiResponse(responseCode = "404", description = "Книга не найдена",
                     content = @Content)
     })
     @GetMapping("/search")
@@ -37,12 +37,12 @@ public class BookController {
         return ResponseEntity.ok(book);
     }
 
-    @Operation(summary = "Find books by category name")
+    @Operation(summary = "Найти книги в категории")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the books",
+            @ApiResponse(responseCode = "200", description = "Книги найдены",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Book.class)) }),
-            @ApiResponse(responseCode = "404", description = "Books not found",
+            @ApiResponse(responseCode = "404", description = "Книг не обнаружено",
                     content = @Content)
     })
     @GetMapping("/category/{categoryName}")
@@ -54,9 +54,9 @@ public class BookController {
         return ResponseEntity.ok(books);
     }
 
-    @Operation(summary = "Create a new book")
+    @Operation(summary = "Добавить книгу")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Book created",
+            @ApiResponse(responseCode = "201", description = "Книга добавлена",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Book.class)) })
     })
@@ -66,12 +66,12 @@ public class BookController {
         return ResponseEntity.status(201).body(createdBook);
     }
 
-    @Operation(summary = "Update an existing book")
+    @Operation(summary = "Изменить имеющуюуся книгу")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Book updated",
+            @ApiResponse(responseCode = "200", description = "Книга обновлена",
                     content = { @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Book.class)) }),
-            @ApiResponse(responseCode = "404", description = "Book not found",
+            @ApiResponse(responseCode = "404", description = "Не удалось обновить книгу",
                     content = @Content)
     })
     @PutMapping("/{id}")
@@ -84,10 +84,10 @@ public class BookController {
         }
     }
 
-    @Operation(summary = "Delete a book by ID")
+    @Operation(summary = "Удалить книгу по ID")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Book deleted"),
-            @ApiResponse(responseCode = "404", description = "Book not found",
+            @ApiResponse(responseCode = "204", description = "Книга удалена"),
+            @ApiResponse(responseCode = "404", description = "Книга не найдена",
                     content = @Content)
     })
     @DeleteMapping("/{id}")
